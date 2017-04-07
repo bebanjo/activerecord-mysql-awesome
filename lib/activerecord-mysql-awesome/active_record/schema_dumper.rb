@@ -18,8 +18,6 @@ module ActiveRecord
           buf = buf.string
           buf.sub!(/(?=, force: (?:true|:cascade))/, pkcolspec.map {|key, value| ", #{key}: #{value}"}.join) if pkcolspec
           buf.sub!(/(?= do \|t\|)/, ", options: #{table_options.inspect}") if table_options
-          stream.print buf
-          stream
         ensure
           @types = @connection.native_database_types
         end
